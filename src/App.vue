@@ -1,9 +1,9 @@
 <template>
-    <div>content</div>
+    <div>Navbars</div>
+    <router-link to="/">home</router-link>
     <div>
         <router-link to="/about">about</router-link>
     </div>
-    <router-link to="/">home</router-link>
     <router-view></router-view>
 </template>
 
