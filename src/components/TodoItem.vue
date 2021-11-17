@@ -56,8 +56,8 @@ export default {
     font-size: 24px;
     margin-right: 20px;
     width: 200px;
-    justify-content: start;
     display: flex;
+    align-items: flex-start;
 }
 .completed {
     text-decoration: line-through;

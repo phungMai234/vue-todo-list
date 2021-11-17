@@ -2,6 +2,7 @@
     <h1>List todo</h1>
     <input type="text" v-model="item" />
     <button @click="addItem">Add</button>
+
     <ul>
         <li v-for="todo in todos" :key="todo.name">
             <TodoItem
@@ -14,7 +15,8 @@
 </template>
 
 <script>
-import TodoItem from "./TodoItem.vue";
+import TodoItem from "../components/TodoItem.vue";
+
 export default {
     name: "Home",
     components: {
