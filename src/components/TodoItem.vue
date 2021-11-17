@@ -2,13 +2,15 @@
     <div class="wrapper">
         <div class="item-body">
             <input
+                name="data.name"
                 type="checkbox"
-                value="data?.isCompleted"
+                value="data.done"
+                :checked="data.done"
                 @click="completedItem"
             />
 
-            <div class="item-todo" :class="{ completed: data?.isCompleted }">
-                {{ data.name }}
+            <div class="item-todo" :class="{ completed: data?.done }">
+                {{ data.title }}
             </div>
 
             <button @click="removeItem" class="del-icon">x</button>
@@ -30,7 +32,7 @@ export default {
     },
     computed: {
         isCompletedTask() {
-            return this.data && this.data?._isCompleted;
+            return this.data && this.data?.done;
         },
     },
     watch: {

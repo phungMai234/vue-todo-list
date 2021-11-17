@@ -10,7 +10,7 @@ export default {
     name: "About",
     computed: {
         count() {
-            return this.$store.state.count;
+            return this.$store.state.countStore.count;
         },
     },
     methods: {

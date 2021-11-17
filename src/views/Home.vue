@@ -1,10 +1,10 @@
 <template>
     <h1>List todo</h1>
-    <input type="text" v-model="item" />
+    <input type="text" v-model="title" />
     <button @click="addItem">Add</button>
 
     <ul>
-        <li v-for="todo in todos" :key="todo.name">
+        <li v-for="todo in todos" :key="todo.id">
             <TodoItem
                 :data="todo"
                 @remove-item="removeItemById"
@@ -24,52 +24,24 @@ export default {
     },
     data() {
         return {
-            todos: [
-                {
-                    id: 1,
-                    name: "clean the house",
-                    isCompleted: false,
-                },
-                {
-                    id: 2,
-                    name: "study Vue",
-                    isCompleted: false,
-                },
-            ],
-            item: "",
+            title: "",
         };
     },
     methods: {
         addItem() {
-            this.todos.push({
-                id: Math.random()
-                    .toString(36)
-                    .replace(/[^a-z]+/g, "")
-                    .substr(0, 5),
-                name: this.item,
-                isCompleted: false,
-            });
-            this.item = "";
+            this.$store.dispatch("addNewTodoAction", { title: this.title });
+            this.title = "";
         },
         removeItemById({ id }) {
-            const newTodos = this.todos.filter(
-                (e) => e.id.toString() !== id.toString()
-            );
-
-            this.todos = newTodos;
+            this.$store.dispatch("removeTodoAction", { id });
         },
         completeTask({ id }) {
-            const newTodos = this.todos.map((e) => {
-                if (e.id.toString() === id.toString()) {
-                    return {
-                        ...e,
-                        isCompleted: !e.isCompleted,
-                    };
-                }
-                return e;
-            });
-
-            this.todos = newTodos;
+            this.$store.dispatch("doneTodoAction", { id });
+        },
+    },
+    computed: {
+        todos: function () {
+            return this.$store.state.todoStore.todos;
         },
     },
 };
