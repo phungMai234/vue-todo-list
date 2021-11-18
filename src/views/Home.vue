@@ -12,6 +12,10 @@
             ></TodoItem>
         </li>
     </ul>
+
+    <div>Completed: {{ countDone }}</div>
+    <div>All: {{ countTotal }}</div>
+    <div>count: {{ count }}</div>
 </template>
 
 <script>
@@ -42,6 +46,15 @@ export default {
     computed: {
         todos: function () {
             return this.$store.state.todoStore.todos;
+        },
+        count: function () {
+            return this.$store.state.countStore.count;
+        },
+        countDone() {
+            return this.$store.getters.countDone;
+        },
+        countTotal() {
+            return this.$store.getters.totalTask;
         },
     },
 };

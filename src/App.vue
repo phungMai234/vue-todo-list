@@ -4,12 +4,19 @@
     <div>
         <router-link to="/about">about</router-link>
     </div>
-    <router-view></router-view>
+    <Layout>
+        <router-view></router-view>
+    </Layout>
 </template>
 
 <script>
+import Layout from "./components/Layout";
+
 export default {
     name: "App",
+    components: {
+        Layout,
+    },
 };
 </script>
 
