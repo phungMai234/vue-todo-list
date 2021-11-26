@@ -1,6 +1,5 @@
 <template>
-    <div>Layout</div>
-    <slot></slot>
+    <div><slot></slot></div>
 </template>
 
 <script>
@@ -11,6 +10,6 @@ export default {
 
 <style scoped>
 div {
-    color: red;
+    padding: 20px;
 }
 </style>
